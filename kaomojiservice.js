@@ -1,4 +1,5 @@
 "use strict"
+
 var Kaomoji = require('./kaomoji');
 var _ = require('lodash');
 var bluebird = require('bluebird')

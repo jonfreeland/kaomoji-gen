@@ -6,6 +6,7 @@ var app = koa()
 var KaomojiService = require('./kaomojiservice')
 
 app.use(function *(){
+	console.log(this.request.body);
 	var results = yield KaomojiService.getEmoji(this.query.tags)
 	this.body = results;
 });
