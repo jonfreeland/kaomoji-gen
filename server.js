@@ -9,8 +9,8 @@ var app = koa()
 
 app.use(koaBody());
 app.use(function *(){
-	console.log(this.request.body);
-	var results = yield KaomojiService.getEmoji(this.query.tags)
+	var searchStr = this.query.text || this.request.body.text;
+	var results = yield KaomojiService.getEmoji(searchStr);
 	this.body = results;
 });
 
