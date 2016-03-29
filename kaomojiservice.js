@@ -1,16 +1,22 @@
 "use strict"
+var Kaomoji = require('./kaomoji');
 var _ = require('lodash');
+var bluebird = require('bluebird')
 var elastic = require('elasticsearch');
 var client = new elastic.Client({
 	host: process.env.ELASTICSEARCH_URL,
-	log: 'trace'
+	log: 'trace',
+	defer: function(){
+		return bluebird.defer()
+	}
 });
 
-class EmojiService {
-	constructor(){
-		console.log('hello');
-	}
+class KaomojiService {
+	constructor(){}
+
 	static getEmoji(search){
+		search = search || '';
+
 		var searchArray = search.split(' ');
 		searchArray.push('all');
 		
@@ -19,7 +25,7 @@ class EmojiService {
 			type: 'parts',
 			body: {}
 		}
-		var partTypes = ['eyes','mouth','arms','decorations','cheeks'];
+		var partTypes = ['eyes','mouth','arms','decoration','cheeks'];
 
 		var queries = _.reduce(partTypes,function(result,type){
 			result.push({_index:'kaomoji',_type:'parts'})
@@ -36,17 +42,20 @@ class EmojiService {
 		
 		return client.msearch(_.merge({},searchBase,{
 			body:queries
-		})).then(function(res){
-			console.log(res);
-			return res;
+		})).then(function(response){
+			var selectedParts = _.reduce(partTypes,function(result, type, i){
+				result[type] = _.sample(response.responses[i].hits.hits)._source
+				return result;
+			},{});	
+			return new Kaomoji(selectedParts).toString();
 		})
 	}
 
 	static setup(){
-		client.indices.delete({
+		var promise = client.indices.delete({
 			index: 'kaomoji'
-		}).then(function(){
-			return client.indices.create({
+		}).finally(function(){
+			client.indices.create({
 				index: 'kaomoji',
 				body:{
 					mappings:{
@@ -60,16 +69,14 @@ class EmojiService {
 						}
 					}
 				}
+			}).then(KaomojiService.reindex)
+			.then(function(){
+				console.log('Indexing OK!');
 			})
-			
-		}).then(EmojiService.reindex)
-		.then(function(){
-			console.log('Indexing OK!');
-		})
-		.catch(function(err){
-			console.log(err);
+			.catch(function(err){
+				console.log(err);
+			});
 		});
-
 	}
 
 	static reindex(){
@@ -175,7 +182,7 @@ class EmojiService {
 			return result;
 		});
 
-		return EmojiService.bulkIndex(_.concat(eyes,arms,mouths,cheeks,decorations));
+		return KaomojiService.bulkIndex(_.concat(eyes,arms,mouths,cheeks,decorations));
 	}
 
 	static bulkIndex(items){
@@ -194,5 +201,5 @@ class EmojiService {
 	}
 }
 
-module.exports = EmojiService;
+module.exports = KaomojiService;
 
