@@ -10,8 +10,11 @@ var app = koa()
 app.use(koaBody());
 app.use(function *(){
 	var searchStr = this.query.text || this.request.body.text;
-	var results = yield KaomojiService.getEmoji(searchStr);
-	this.body = results;
+	var kaomoji = yield KaomojiService.getEmoji(searchStr);
+	this.body = {
+		"response_type":"in_channel",
+		"text": kaomoji
+	};
 });
 
 app.on('error',function(err){
