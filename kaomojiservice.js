@@ -6,7 +6,6 @@ var bluebird = require('bluebird')
 var elastic = require('elasticsearch');
 var client = new elastic.Client({
 	host: process.env.ELASTICSEARCH_URL,
-	log: 'trace',
 	defer: function(){
 		return bluebird.defer()
 	}

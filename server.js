@@ -2,9 +2,12 @@
 require('dotenv').config({silent:true});
 
 var koa = require('koa');
-var app = koa()
+var koaBody = require('koa-body');
 var KaomojiService = require('./kaomojiservice')
 
+var app = koa()
+
+app.use(koaBody());
 app.use(function *(){
 	console.log(this.request.body);
 	var results = yield KaomojiService.getEmoji(this.query.tags)
