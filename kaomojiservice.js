@@ -64,8 +64,8 @@ class KaomojiService {
 							properties:{
 								type: {type:"string"},
 								tags: {type:"string"},
-								content: {type:"nested", index:"no"},
-								meta: {type:"nested", index:"no"}
+								content: {type:"nested"},
+								meta: {type:"nested"}
 							}
 						}
 					}
