@@ -62,7 +62,7 @@ class KaomojiService {
 						parts:{
 							properties:{
 								type: {type:"string"},
-								tags: {type:"string"},
+								tags: {type:"string",index:"not_analyzed"},
 								content: {type:"nested"},
 								meta: {type:"nested"}
 							}
@@ -198,6 +198,25 @@ class KaomojiService {
 		},[]);
 
 		return client.bulk({body:tasks})
+	}
+
+	static getAvailableTags(){
+		return client.search({
+			index: 'kaomoji',
+			type: 'parts',
+			search_type: 'count',
+			body:{
+				"aggregations": {
+					"tags": {
+						"terms": {
+							"field": "tags",
+							"size": 0
+						}
+					}
+				}
+			}
+		});
+
 	}
 }
 
