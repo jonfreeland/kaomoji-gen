@@ -1,10 +1,11 @@
 "use strict"
 
-var Kaomoji = require('./kaomoji');
-var _ = require('lodash');
+var Kaomoji  = require('./kaomoji');
+var _        = require('lodash');
 var bluebird = require('bluebird')
-var elastic = require('elasticsearch');
-var client = new elastic.Client({
+var elastic  = require('elasticsearch');
+
+var client   = new elastic.Client({
 	host: process.env.ELASTICSEARCH_URL,
 	defer: function(){
 		return bluebird.defer()
@@ -80,10 +81,10 @@ class KaomojiService {
 	}
 
 	static reindex(){
-		var eyes = require('./parts/eyes');
-		var mouths = require('./parts/mouths');
-		var arms = require('./parts/arms');
-		var cheeks = require('./parts/cheeks');
+		var eyes        = require('./parts/eyes');
+		var mouths      = require('./parts/mouths');
+		var arms        = require('./parts/arms');
+		var cheeks      = require('./parts/cheeks');
 		var decorations = require('./parts/decorations');
 
 		eyes = _.map(eyes,function(item){
@@ -95,7 +96,7 @@ class KaomojiService {
 			if(item.equal){
 				result.content.left = result.content.right = item.eye;
 			}else{
-				result.content.left = item.left;
+				result.content.left  = item.left;
 				result.content.right = item.right;
 			}
 			if(item.tags && item.tags.length){
