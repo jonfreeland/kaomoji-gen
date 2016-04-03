@@ -27,17 +27,24 @@ class KaomojiService {
 			body: {}
 		}
 		var partTypes = ['eyes','mouth','arms','decoration','cheeks'];
-
 		var queries = _.reduce(partTypes,function(result,type){
 			result.push({_index:'kaomoji',_type:'parts'})
 			result.push({query:{
-				bool: {
-					must: [
-						{ terms: { tags: searchArray }},
-						{ term: { type: type}}
-					]
+				function_score:{
+					filter:{ term: { type: type } },
+					query: {
+						bool: { must: {terms: { tags: searchArray }}} 
+					},
+					functions: [
+						{
+							random_score: {
+								seed: Math.round(Math.random()*1000)
+							}
+						}
+					],
+					score_mode: "sum"
 				}
-			}})
+			}});
 			return result;
 		},[]);
 		
@@ -45,7 +52,7 @@ class KaomojiService {
 			body:queries
 		})).then(function(response){
 			var selectedParts = _.reduce(partTypes,function(result, type, i){
-				result[type] = _.sample(response.responses[i].hits.hits)._source
+				result[type] = response.responses[i].hits.hits[0]._source;
 				return result;
 			},{});	
 			return new Kaomoji(selectedParts).toString();
