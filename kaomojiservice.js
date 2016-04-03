@@ -29,22 +29,25 @@ class KaomojiService {
 		var partTypes = ['eyes','mouth','arms','decoration','cheeks'];
 		var queries = _.reduce(partTypes,function(result,type){
 			result.push({_index:'kaomoji',_type:'parts'})
-			result.push({query:{
-				function_score:{
-					filter:{ term: { type: type } },
-					query: {
-						bool: { must: {terms: { tags: searchArray }}} 
-					},
-					functions: [
-						{
-							random_score: {
-								seed: Math.round(Math.random()*1000)
+			result.push({
+				size:1,
+				query:{
+					function_score:{
+						filter:{ term: { type: type } },
+						query: {
+							bool: { must: {terms: { tags: searchArray }}} 
+						},
+						functions: [
+							{
+								random_score: {
+									seed: Math.round(Math.random()*1000)
+								}
 							}
-						}
-					],
-					score_mode: "sum"
+						],
+						score_mode: "sum"
+					}
 				}
-			}});
+			});
 			return result;
 		},[]);
 		
