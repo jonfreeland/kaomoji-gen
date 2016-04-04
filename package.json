@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@slack/client": "^2.3.0",
     "bluebird": "^3.3.4",
     "dotenv": "^2.0.0",
     "elasticsearch": "^10.1.3",

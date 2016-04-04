@@ -1,13 +1,22 @@
 
 require('dotenv').config({silent:true});
 
-var koa = require('koa');
-var koaBody = require('koa-body');
-var router = require('koa-router')();
+var koa            = require('koa');
+var koaBody        = require('koa-body');
+var router         = require('koa-router')();
 var KaomojiService = require('./kaomojiservice');
-var app = koa();
+var Slack          = require('@slack/client').WebClient;
+var app            = koa();
 
-app.use(koaBody());
+/*
+var slack = new Slack('get-a-token-here',{logLevel: 'debug'});
+
+slack.chat.postMessage("#channel","text",{
+	as_user: true,
+}).then(function(res){
+	console.log(res)
+});
+*/ 
 
 router.post('/', function *(){
 	var searchStr = this.query.text || this.request.body.text;
@@ -23,8 +32,9 @@ router.get('/', function *(){
 	this.body = tags.aggregations.tags.buckets;
 });
 
+app.use(koaBody());
 app.use(router.routes())
-	.use(router.allowedMethods());
+   .use(router.allowedMethods());
 
 app.on('error',function(err){
 	console.log(err);
