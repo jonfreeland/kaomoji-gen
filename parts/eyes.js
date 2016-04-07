@@ -10,7 +10,7 @@ module.exports = [
   }, {
     equal: true,
     eye: 'ಠ',
-    tags: ['doubt']
+    tags: ['doubt' , 'angry']
   }, {
     left: 'ಠ',
     right: 'ರೃ',
@@ -27,11 +27,11 @@ module.exports = [
   }, {
     left: '｀',
     right: '´',
-    tags: ['angry']
+    tags: ['angry' , 'upset']
   }, {
     equal: true,
     eye: '￣',
-    tags: ['sleepy']
+    tags: ['sleepy' , 'serious']
   }, {
     equal: true,
     eye: '¬',
@@ -47,7 +47,7 @@ module.exports = [
   }, {
     left: '⌣̀',
     right: '⌣́',
-    tags: ['happy', 'sleepy']
+    tags: ['happy', 'sleepy' , 'disappointed']
   }, {
     left: '-`',
     right: '´- ｡',
@@ -69,7 +69,7 @@ module.exports = [
   }, {
     equal: true,
     eye: '＠',
-    tags: ['dizzy']
+    tags: ['dizzy' , 'crazy']
   }, {
     equal: true,
     eye: '눈',
@@ -130,7 +130,7 @@ module.exports = [
   }, {
     equal: true,
     eye: '♡',
-    tags: ['sleepy']
+    tags: ['sleepy' , 'happy']
   }, {
     equal: true,
     eye: '˘'
