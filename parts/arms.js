@@ -116,5 +116,68 @@ module.exports = [
       isInner: true,
       value: 'ς'
     }
+  },{
+    left: {
+      value: '╭'
+    },
+    right: {
+      value: '╮'
+    }
+  },{
+    left: {
+      value: '૭',
+      isInner: true
+    },
+    right: {
+      value: '૭'
+    },
+    tags: ['fighting', 'punching','angry']
+  },{
+    left: {
+      value: 'ง',
+      isInner: true
+    },
+    right: {
+      value: 'ง⁼³₌₃'
+    },
+    tags: ['fighting','punching','angry']
+  },{
+    left: {
+      value: 'ᕙ',
+      isInner: true
+    },
+    right: {
+      value: 'ง'
+    }
+  },{
+    left: {
+      value: '੭'
+    },
+    right: {
+      value: '੭*⁾⁾ ᑦᵒᔿᵉ ᵒᐢᵎᵎ'
+    },
+    tags: ['angry','beckon']
+  },{
+    left: {
+      value: '<'
+    },
+    right: {
+      value: '>'
+    }
+  },{
+    left: {
+      value: 'ㄟ'
+    },
+    right:{
+      value: 'ㄏ'
+    },
+    tags: ['shrugging','bird']
+  },{
+    left: {
+      value: 'ᕤ'
+    },
+    right: {
+      value: 'ᕤ'
+    }
   }
 ];

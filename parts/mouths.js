@@ -92,5 +92,14 @@ module.exports = [
   }, {
     value: '⊝',
     tags: ['bird', 'animal']
+  }, {
+    value: 'ɛ',
+    tags: ['kiss','animal']
+  }, {
+    value: '⌔',
+    tags: ['animal','bird']
+  },{
+    value: '﹏',
+    tags: ['cute','animal','happy']
   }
 ];

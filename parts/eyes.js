@@ -146,5 +146,69 @@ module.exports = [
     equal: true,
     eye: 'Ⴃ',
     tags: []
+  },{
+    left: '•́',
+    right: '•̀',
+    tags: ['sorry','sad']
+  },{
+    left: '•̀',
+    right: '•́',
+    tags: ['angry','fighting']
+  },{
+    equal: true,
+    eye: '*',
+    tags: ['excited']
+  },{
+    equal: true,
+    eye: '◉',
+    tags: ['excited','cat','cute']
+  },{
+    right: '•`',
+    left: '´•',
+    tags: ['innocent','sad']
+  },
+  {
+    left: 'ó',
+    right: 'ò',
+    tags: ['sorry','sad']
+  },{
+    equal: true,
+    eye: 'ᵌ ',
+    tags: ['tired']
+  },
+  {
+    left: '◍•',
+    right: '•◍',
+    tags: ['cute','blushing','happy']
+  },{
+    left: 'ˊ',
+    right: 'ˋ',
+    tags: ['sleepy','suffering','sad']
+  },{
+    equal: true,
+    eye: '☌',
+    tags: ['cute','happy']
+  },{
+    equal: true,
+    eye: '•͈',
+    tags: ['cute','blushing']
+  },
+  {
+    equal: true,
+    eye: '⚆',
+    tags: ['scared']
+  },
+  {
+    equal: true,
+    eye: '❛',
+    tags: ['happy','cute']
+  }, {
+    equal: true,
+    eye: 'ｘ',
+    tags: ['dead']
+  }, {
+    equal: true,
+    eye: ' ༎ຶ',
+    tags: ['crying','scary']
   }
 ];
