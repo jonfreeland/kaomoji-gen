@@ -76,13 +76,13 @@ module.exports = [
     tags: ['all']
   }, {
     value: 'ε',
-    tags: ['happy', 'love']
+    tags: ['happy', 'love','cute']
   }, {
     value: 'ᴥ',
-    tags: ['animal']
+    tags: ['animal','cute']
   }, {
     value: 'ڡ',
-    tags: ['happy']
+    tags: ['happy','cute','delicious','yummy']
   }, {
     value: '×',
     tags: ['animal']
@@ -94,7 +94,7 @@ module.exports = [
     tags: ['bird', 'animal']
   }, {
     value: 'ɛ',
-    tags: ['kiss','animal']
+    tags: ['kiss','animal','cute']
   }, {
     value: '⌔',
     tags: ['animal','bird']
