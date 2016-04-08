@@ -6,6 +6,7 @@ var koaBody        = require('koa-body');
 var router         = require('koa-router')();
 var KaomojiService = require('./kaomojiservice');
 var Slack          = require('@slack/client').WebClient;
+var _              = require('lodash');
 var app            = koa();
 
 /*
@@ -27,9 +28,12 @@ router.post('/', function *(){
 	};
 });
 
-router.get('/', function *(){
+router.get('/tags', function *(){
 	var tags = yield KaomojiService.getAvailableTags();
-	this.body = tags.aggregations.tags.buckets;
+	this.body = {
+		"response_type": "ephemeral",
+		"text":_.map(tags.aggregations.tags.buckets,'key').join(', ')
+	};
 });
 
 app.use(koaBody());
