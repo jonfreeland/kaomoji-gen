@@ -7,7 +7,7 @@ Japanese style emoticons. Read more here: https://en.wikipedia.org/wiki/Emoticon
 ### Add it to your Slack!
 
 ##### /km [tags separated by space]
-> e.g.: /km angry cute --> ʕ ૭•̀Д•́ ʔ૭
+> e.g.: /km angry cute --> __ʕ ૭•̀Д•́ ʔ૭__
 
  - Go to: https://YOUR-SLACK-DOMAIN.slack.com/apps/manage/custom-integrations
  - Add a new integration.
@@ -20,5 +20,8 @@ You may also add the command `/kmtags` with a `POST` request to `http://kaomoji-
 
 
 Feel free to contribute with a pull request (new parts, additional tagging would be great), or fork it!
+
+##### Techincal stuff: 
+This is a small `node.js` experiment using [Koa](http://koajs.com/) and an elasticsearch service. It's currently tested on a `Heroku` environment and should work straight away. Tried with `Searchbox` as the elasticsearch service. It's available as a free (or paid) addon.
 
 
