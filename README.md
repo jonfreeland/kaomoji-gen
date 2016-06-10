@@ -22,6 +22,8 @@ You may also add the command `/kmtags` with a `POST` request to `http://kaomoji-
 Feel free to contribute with a pull request (new parts, additional tagging would be great), or fork it!
 
 ##### Techincal stuff: 
-This is a small `node.js` experiment using [Koa](http://koajs.com/) and an elasticsearch service. It's currently tested on a `Heroku` environment and should work straight away. Tried with `Searchbox` as the elasticsearch service. It's available as a free (or paid) addon.
+This is a small `node.js` experiment using [Koa](http://koajs.com/) and an elasticsearch service. It's currently tested on a `Heroku` environment and should be ready to deploy right away. Tried with `Searchbox` as the elasticsearch service. It's available as a free (or paid) addon.
+
+Use `.envexample` as an example of how your `.env` file should look for local development.
 
 
